@@ -723,22 +723,23 @@ def main(args=sys.argv[1:]):
     parser.add_argument('--version',
                         action='version',
                         version=pymchelper.__version__)
-    args = parser.parse_args(args)
+    args_parsed = parser.parse_args(args)
 
     # TODO add filename discovery
 
-    files = sorted(glob.glob(args.inputfile))
+    files = sorted(glob.glob(args_parsed.inputfile))
     if not files:
-        print('File does not exist: ' + args.inputfile)
+        print('File does not exist: ' + args_parsed.inputfile)
 
-    if args.outputfile is None:
-        args.outputfile = files[0][:-3] + "txt"
+    if args_parsed.outputfile is None:
+        args_parsed.outputfile = files[0][:-3] + "txt"
 
-    if args.many:
-        merge_many(files, args.converter, args.nan, args.colormap)
+    if args_parsed.many:
+        merge_many(files, args_parsed.converter, args_parsed.nan,
+                   args_parsed.colormap)
     else:
-        merge_list(files, args.outputfile, args.converter, args.nan,
-                   args.colormap)
+        merge_list(files, args_parsed.outputfile, args_parsed.converter,
+                   args_parsed.nan, args_parsed.colormap)
 
     return 0
 
