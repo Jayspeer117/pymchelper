@@ -1,0 +1,74 @@
+* SHIELDHIT12A comes with following estimators and detectors
+*
+* Estimators:
+*  - GEOMAP : mapping the geometry
+*  - ZONE : Scoring by zone
+*  - CYL : Cylindrical scoring
+*  - MSH : Cartesian mesh scoring card
+*  - PLANE : Scoring by a single 2-D infinite plane
+*  - DZONE : Differential scoring by zone
+*  - DCYL : Differential cylindrical scoring
+*  - DMSH : Differential cartesian mesh scoring card
+*  - DPLANE : Differential scoring by a single 2-D infinite plane
+*  - DMSHZ and DCYLZ : Spectral files in TRiP98 format
+*  - TRACE : Dump particle tree
+*
+* Detectors:
+*  - ENERGY : Absolute energy deposited in each bin
+*  - FLUENCE : Track length fluence in each bin
+*  - CROSSFLU : Absolute number of particles entering each bin
+*  - DOSE : Energy deposited in each bin divided by total mass (volume × density) of the bin
+*  - LETFLU : Sum of the products between fluence and unrestricted linear energy transfer (LET) over particle type
+*  - DLET, DLETG : Dose (D) averaged unrestricted stopping power (LET) in MeV/cm
+*  - TLET, TLETG : Track length - averaged unrestricted stopping power (LET) in MeV/cm.
+*  - AVG-ENERGY : Track length averaged energy
+*  - AVG-BETA : Track length averaged relativistic velocity
+*  - SPC : Only available for DMSHZ
+*  - ALANINE : Response-equivalent dose for the alanine detector
+*  - COUNTER : A counter which counts the number of particles crossing a PLANE estimator
+*  - ZONE : number of the zone
+*  - MEDIUM : number of the medium
+*  - RHO : density of the material
+*
+* Differential parameters:
+*  - ENERGY
+*  - LET
+*  - ANGLE
+*
+* detectors: ENERGY, FLUENCE, CROSSFLU,
+* dose, geomap+zone,rho (not generated for parallel run)
+* CYL, MSH
+*   0-D MSH scorer
+*   1-D MSH scorer : x,y,z  (10x10x10)
+*   2-D MSH scorer : xy,yz,xz
+*   3-D MSH scorer : xyz
+* zone scorer
+*  - full
+*  - empty
+*  - only C-ions
+*  - ENERGY, CROSSFLU, DLET, COUNTER and PET
+*  - others : need to divide by volume
+* plane
+* 1-D MSH
+* all scored quantities
+* dose, energy etc
+* DZONE, DCYL, DMSH and DPLANE
+* ENERGY, LET and ANGLE
+*----0---><----1---><----2---><----3---><----4---><----5---><----6--->
+CYL              0.0       0.0       0.0      10.0       7.0      30.0
+                   1         1       300        -1    ENERGY    ex_cyl
+*----0---><----1---><----2---><----3---><----4---><----5---><----6--->
+MSH             -5.0      -5.0       0.0       5.0       5.0      30.0
+                   1         1       300        -1    ENERGY   ex_zmsh
+*----0---><----1---><----2---><----3---><----4---><----5---><----6--->
+MSH             -1.0      -5.0      10.0       1.0       5.0      12.0
+                   1       100         1        -1    ENERGY   ex_ymsh
+*----0---><----1---><----2---><----3---><----4---><----5---><----6--->
+MSH             -5.0      -5.0       0.0       5.0       5.0      30.0
+                   1       100       300        -1    ENERGY  ex_yzmsh
+*----0---><----1---><----2---><----3---><----4---><----5---><----6--->
+GEOMAP          -1.0     -25.0     -15.0       1.0      25.0      35.0
+                   1        50        50                ZONE  ex_yzzon
+*----0---><----1---><----2---><----3---><----4---><----5---><----6--->
+GEOMAP         -25.0     -25.0      10.0      25.0      25.0      11.0
+                  50        50         1                ZONE  ex_xyzon

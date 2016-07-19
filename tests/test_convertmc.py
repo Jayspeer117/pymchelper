@@ -30,5 +30,9 @@ class TestRunMethod(unittest.TestCase):
         pass
 
 
+class ShieldHitTest(unittest.TestCase):
+    def test_simple(self):
+        pass
+
 if __name__ == '__main__':
     unittest.main()
