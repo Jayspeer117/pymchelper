@@ -147,8 +147,8 @@ setuptools.setup(
     ],
     entry_points={
         'console_scripts': [
-            'convertmc=' + \
-            'pymchelper.run:main',
+            'convertmc=pymchelper.run:main',
+            'runmc=pymchelper.utils.runmc:main',
             'pld2sobp=pymchelper.utils.pld2sobp:main',
         ],
     },
