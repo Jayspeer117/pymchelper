@@ -107,4 +107,4 @@ build_debian_8_jessie_py3:
           git config --global user.name "Leszek Grzanka"
           git add *deb
           git commit -m "deb files"
-          
+          git push
