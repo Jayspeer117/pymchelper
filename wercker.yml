@@ -83,6 +83,7 @@ build_debian_8_jessie_py3:
           pwd
           ls -al
           git tag -l --points-at HEAD
-          pip3 install stdeb
+          pip3 install stdeb versioneer
+          versioneer install
           python3 setup.py --command-packages=stdeb.command bdist_deb
           ls -al
