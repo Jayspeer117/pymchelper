@@ -106,7 +106,7 @@ build_debian_8_jessie_py3:
           git config --global user.email "leszek.grzanka@gmail.com"
           git config --global user.name "Leszek Grzanka"
           cd myrepo
-          reprepro includedeb wheezy ../*.deb
+          reprepro includedeb jessie ../*.deb
           cd ..
           git add -A
           git commit -m "deb files"
