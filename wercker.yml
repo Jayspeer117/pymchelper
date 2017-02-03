@@ -74,7 +74,7 @@ build_debian_8_jessie_py3:
         name: prerequisites1
         code: |
           sudo apt-get update
-          sudo apt-get install -qq -y --no-install-recommends python3-pip  wget git debhelper python3-all-dev python-all fakeroot gcc build-essential openssh-client
+          sudo apt-get install -qq -y --no-install-recommends python3-pip  wget git debhelper python3-all-dev python-all fakeroot gcc build-essential openssh-client reprepro
           python3 -V
           pip3 -V
 
@@ -105,6 +105,10 @@ build_debian_8_jessie_py3:
           cd testGHP/
           git config --global user.email "leszek.grzanka@gmail.com"
           git config --global user.name "Leszek Grzanka"
-          git add *deb
+          cd myrepo
+          reprepro includedeb wheezy ../*.deb
+          cd ..
+          git add -A
           git commit -m "deb files"
           git push
+          
