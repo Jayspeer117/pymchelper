@@ -73,7 +73,7 @@ build_debian_8_jessie_py3:
         name: prerequisites
         code: |
           sudo apt-get update
-          sudo apt-get install -qq -y --no-install-recommends python3-pip  wget git debhelper
+          sudo apt-get install -qq -y --no-install-recommends python3-pip  wget git debhelper python3-all-dev
           python3 -V
           pip3 -V
 
