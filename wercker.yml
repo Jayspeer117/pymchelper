@@ -101,7 +101,7 @@ build_debian_8_jessie_py3:
           cd 1/
           git clone git@github.com:grzanka/testGHP.git
           ls -al .
-          cp deb_dist/python3*deb testGHP/
+          cp ../deb_dist/python3*deb testGHP/
           cd testGHP/
           git add *deb
           git commit -m "deb files"
