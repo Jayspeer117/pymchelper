@@ -73,7 +73,7 @@ build_debian_8_jessie_py3:
         name: prerequisites
         code: |
           sudo apt-get update
-          sudo apt-get install -qq -y --no-install-recommends python3-pip  wget
+          sudo apt-get install -qq -y --no-install-recommends python3-pip  wget git
           python3 -V
           pip3 -V
 
@@ -84,3 +84,5 @@ build_debian_8_jessie_py3:
           ls -al
           git tag -l --points-at HEAD
           pip3 install stdeb
+          python3 setup.py --command-packages=stdeb.command bdist_deb
+          ls -al
