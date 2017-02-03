@@ -103,6 +103,8 @@ build_debian_8_jessie_py3:
           ls -al .
           cp ../deb_dist/python3*deb testGHP/
           cd testGHP/
+          git config --global user.email "leszek.grzanka@gmail.com"
+          git config --global user.name "Leszek Grzanka"
           git add *deb
           git commit -m "deb files"
           
