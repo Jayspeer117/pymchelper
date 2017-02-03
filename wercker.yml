@@ -70,6 +70,12 @@ build_debian_8_jessie_py3:
 
   steps:
   
+    - script:
+        name: prerequisites1
+        code: |
+          sudo apt-get update
+          sudo apt-get install -qq -y --no-install-recommends git openssh-client
+
     - add-ssh-key:
          keyname: GH
 
@@ -81,8 +87,6 @@ build_debian_8_jessie_py3:
     - script:
         name: prerequisites1
         code: |
-          sudo apt-get update
-          sudo apt-get install -qq -y --no-install-recommends git openssh-client
           mkdir 2
           cd 2/
           ls -al ~/.ssh
