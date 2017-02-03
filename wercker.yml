@@ -44,9 +44,9 @@ build:
     #     python_location: /usr/bin/python3.2
 
     # A step that executes `pip install` command.
-    - pip-install:
-        requirements_file: "requirements.txt"
-        extra_args: "-rtests/requirements-test.txt"
+#    - pip-install:
+#        requirements_file: "requirements.txt"
+#        extra_args: "-rtests/requirements-test.txt"
 
     # # This pip-install clears the local wheel cache
     # - pip-install:
@@ -59,7 +59,28 @@ build:
         code: |
           echo "python version $(python --version) running"
           echo "pip version $(pip --version) running"
+
+#    - script:
+#        name: test
+#        code: |
+#          tox -e py27
+
+build_debian_8_jessie_py3:
+  box: debian:jessie
+
+  steps:
     - script:
-        name: test
+        name: prerequisites
         code: |
-          tox -e py27
+          sudo apt-get update
+          sudo apt-get install -qq -y --no-install-recommends python3-pip  wget
+          python3 -V
+          pip3 -V
+
+    - script:
+        name: package
+        code: |
+          pwd
+          ls -al
+          git tag -l --points-at HEAD
+          pip3 install stdeb
