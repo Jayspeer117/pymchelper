@@ -29,6 +29,7 @@ build:
     - script:
         name: install
         code: |
+          echo "137"
           sudo apt-get update
           sudo apt-get install -qq -y --no-install-recommends libfreetype6-dev pkg-config
 
